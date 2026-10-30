@@ -177,13 +177,13 @@ function draw(first,last){
  // fields
  var d=new Date(),ds=d.getFullYear()+"/"+String(d.getMonth()+1).padStart(2,"0")+"/"+String(d.getDate()).padStart(2,"0");
  var h=0,s=first+last;for(var i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))%900;
- var F=[["FROM","岡山"],["TO","花東縱谷"],["FLIGHT","70-6002-"+(100+h)],["SEAT","後座"],["DATE",ds]],fx=[375,495,645,775,870];
+ var F=[["FROM","高雄"],["TO","花東縱谷"],["FLIGHT","70-6002"],["SEAT","後座"],["DATE",ds]],fx=[375,495,645,775,870];
  for(var j=0;j<F.length;j++){c.fillStyle="#46567a";c.font="700 14px "+FONT;c.fillText(F[j][0],fx[j],420);c.fillStyle="#0d1b36";c.font="700 24px "+FONT;c.fillText(F[j][1],fx[j],452)}
  c.fillStyle="#46567a";c.font="400 13px "+FONT;c.fillText("非官方示範頁面 · 內容為虛構",375,494);
  // photo
- var px=880,py=60,pw=280,ph=400;
- c.save();rr(c,px+10,py,pw-10,ph,18);c.clip();cover(c,$("imgLoad"),px+10,py,pw-10,ph);c.restore();
- c.strokeStyle="#0b2a5b";c.lineWidth=4;rr(c,px+10,py,pw-10,ph,18);c.stroke();
+ var im=$("imgLoad"),px=850,py=36,pw=320,ph=Math.round(pw*im.naturalHeight/im.naturalWidth);
+ c.save();rr(c,px,py,pw,ph,18);c.clip();c.drawImage(im,px,py,pw,ph);c.restore();
+ c.strokeStyle="#0b2a5b";c.lineWidth=4;rr(c,px,py,pw,ph,18);c.stroke();
  return cv}
 
 function show(first,last){
